@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    branch: main # optional (defaults to master)
+    # dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        value: postgres
+      - key: DB_POSTGRESDB_PORT
+        value: 5432
+      - key: DB_POSTGRESDB_SCHEMA
+        value: public
+      - key: GENERIC_TIMEZONE
+        value: Europe/Berlin
+      - key: TZ
+        value: Europe/Berlin
